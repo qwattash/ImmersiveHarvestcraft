@@ -24,6 +24,9 @@ package com.qwattash.immersiveharvestcraft;
 import com.qwattash.immersiveharvestcraft.ImmersiveHarvestcraft;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.NonNullList;
+import net.minecraft.item.ItemStack;
+
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -31,7 +34,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidRegistry.FluidRegisterEvent;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidUtil;
 
+import java.util.List;
+import java.util.ArrayList;
 
 public class IHTab extends CreativeTabs
 {
@@ -57,7 +64,7 @@ public class IHTab extends CreativeTabs
     @SideOnly(Side.CLIENT)
     public void displayAllRelevantItems(NonNullList<ItemStack> items)
     {
-	super(items);
+	super.displayAllRelevantItems(items);
 	items.addAll(extraBuckets);
     }
 

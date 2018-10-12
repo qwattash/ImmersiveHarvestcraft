@@ -23,18 +23,13 @@ package com.qwattash.immersiveharvestcraft;
 
 import com.qwattash.immersiveharvestcraft.IHLogger;
 import com.qwattash.immersiveharvestcraft.IHTab;
+import com.qwattash.immersiveharvestcraft.IHRecipe;
 import com.qwattash.immersiveharvestcraft.IHConfigManager.IHConfig;
 import com.qwattash.immersiveharvestcraft.fluids.IHFluid;
 import com.qwattash.immersiveharvestcraft.blocks.IHBlock;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.NonNullList;
+
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -43,8 +38,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.Fluid;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -73,6 +66,7 @@ public class ImmersiveHarvestcraft
     public final CreativeTabs modTab = new IHTab();
     public IHFluid fluidManager;
     public IHBlock blockManager;
+    public IHRecipe recipeManager;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -80,6 +74,7 @@ public class ImmersiveHarvestcraft
 	IHLogger.logger = event.getModLog();
 	fluidManager = new IHFluid();
 	blockManager = new IHBlock(fluidManager);
+	recipeManager = new IHRecipe();
 
 	if (IHConfig.compatPresser) {
 	    fluidManager.addJuiceFluids();
@@ -100,5 +95,11 @@ public class ImmersiveHarvestcraft
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+	if (IHConfig.compatPresser)
+	    // remove presser recipe
+	    recipeManager.remove("harvestcraft", "presser");
+	if (IHConfig.compatGrinder)
+	    // remove presser recipe
+	    recipeManager.remove("harvestcraft", "grinder");
     }
 }

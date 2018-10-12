@@ -56,7 +56,8 @@ public class IHBlock
     {
 	fluidManager.juices.forEach((key, value) -> {
 		Block juiceFluidBlock = new JuiceFluidBlock(value);
-		juiceFluidBlock.setCreativeTab(ImmersiveHarvestcraft.modTab);
+		juiceFluidBlock.setCreativeTab(
+			ImmersiveHarvestcraft.instance.modTab);
 		juiceBlocks.put(juiceFluidBlock.getRegistryName().toString(),
 				juiceFluidBlock);
 	    });

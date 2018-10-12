@@ -34,7 +34,19 @@ minecraft {
 }
 
 repositories {
-
+    maven {
+	// location of the maven that hosts JEI files
+	name = "Progwml6 maven"
+	url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        name 'jared maven'
+        url 'http://blamejared.com/maven'
+    }
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
 }
 
 dependencies {
@@ -57,6 +69,14 @@ dependencies {
     // deobfCompile "blusunrize:ImmersiveEngineering:0.12-85-+"
     // deobfCompile "blusunrize:ImmersivePetroleum:0.12-85-+:dev"
     // deobfCompile "blusunrize:harvestcraft:1.12-85-+:dev"
+
+    // compile against the JEI API but do not include it at runtime
+    deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
+    // at runtime, use the full JEI jar
+    runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+
+    deobfProvided "blusunrize:ImmersiveEngineering:0.12-85-+:api"
+    runtime "blusunrize:ImmersiveEngineering:0.12-85-+"
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
