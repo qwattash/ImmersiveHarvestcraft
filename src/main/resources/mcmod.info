@@ -1,0 +1,16 @@
+[
+{
+  "modid": "immersiveharvestcraft",
+  "name": "Immersive Harvestcraft",
+  "description": "Integration mod between harvestcraft and immersive engineering",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["qwattash"],
+  "credits": "The Forge and FML guys, blusunrize, MatrexsVigil",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
