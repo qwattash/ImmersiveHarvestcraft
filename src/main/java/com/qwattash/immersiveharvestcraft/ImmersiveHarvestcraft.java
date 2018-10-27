@@ -23,11 +23,9 @@ package com.qwattash.immersiveharvestcraft;
 
 import com.qwattash.immersiveharvestcraft.IHLogger;
 import com.qwattash.immersiveharvestcraft.IHTab;
-import com.qwattash.immersiveharvestcraft.IHRecipe;
+// import com.qwattash.immersiveharvestcraft.IHRecipe;
 import com.qwattash.immersiveharvestcraft.IHConfigManager.IHConfig;
 import com.qwattash.immersiveharvestcraft.fluids.IHFluid;
-import com.qwattash.immersiveharvestcraft.blocks.IHBlock;
-
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
@@ -39,14 +37,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fluids.FluidRegistry;
 
-import java.util.List;
-import java.util.ArrayList;
-
 @Mod(modid = ImmersiveHarvestcraft.MODID, name = ImmersiveHarvestcraft.NAME,
      version = ImmersiveHarvestcraft.VERSION,
      dependencies = "required-after:forge@[14.23.3.2705,);" +
      "required-after:immersiveengineering@[0.12,);" +
-     /* "required-after:immersivepetroleum@[,);" */
      "required-after:harvestcraft@[1.12,)",
      acceptedMinecraftVersions = "[1.12,1.12.2]")
 public class ImmersiveHarvestcraft
@@ -63,26 +57,14 @@ public class ImmersiveHarvestcraft
     @Mod.Instance(MODID)
     public static ImmersiveHarvestcraft instance = new ImmersiveHarvestcraft();
 
-    public final CreativeTabs modTab = new IHTab();
-    public IHFluid fluidManager;
-    public IHBlock blockManager;
-    public IHRecipe recipeManager;
+    public static CreativeTabs modTab = new IHTab();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
 	IHLogger.logger = event.getModLog();
-	fluidManager = new IHFluid();
-	blockManager = new IHBlock(fluidManager);
-	recipeManager = new IHRecipe();
-
 	if (IHConfig.compatPresser) {
-	    fluidManager.addJuiceFluids();
-	    blockManager.addFluidBlocks();
-	    blockManager.addPresserBlocks();
-	}
-	if (IHConfig.compatGrinder) {
-	    blockManager.addGrinderBlocks();
+	    IHFluid.loader.loadAssets();
 	}
     }
 
@@ -96,10 +78,13 @@ public class ImmersiveHarvestcraft
     public void postInit(FMLPostInitializationEvent event)
     {
 	if (IHConfig.compatPresser)
-	    // remove presser recipe
-	    recipeManager.remove("harvestcraft", "presser");
+	    // remove presser
+	    IHRecipe.remove("harvestcraft", "presser");
 	if (IHConfig.compatGrinder)
-	    // remove presser recipe
-	    recipeManager.remove("harvestcraft", "grinder");
+	    // remove grinder
+	    IHRecipe.remove("harvestcraft", "grinder");
+	IHRecipe.remove("harvestcraft", "market");
+	IHRecipe.remove("harvestcraft", "shippingbin");
+	IHRecipe.remove("harvestcraft", "well");
     }
 }

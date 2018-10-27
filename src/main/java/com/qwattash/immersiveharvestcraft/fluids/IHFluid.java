@@ -22,67 +22,46 @@
 package com.qwattash.immersiveharvestcraft.fluids;
 
 import com.qwattash.immersiveharvestcraft.IHLogger;
+import com.qwattash.immersiveharvestcraft.ImmersiveHarvestcraft;
+import com.qwattash.immersiveharvestcraft.utils.IHAssetLoader;
+import com.qwattash.immersiveharvestcraft.utils.AssetParser;
+
+import com.google.gson.JsonObject;
+
+import net.minecraft.util.JsonUtils;
+import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.awt.Color;
 
-public class IHFluid
-{   
-    protected static Map<String, Integer> juiceColors =
-	new HashMap<String, Integer>() {{
-	    put("fluidapplejuice", 0xCFC05C);
-	    put("fluidcarrotjuice", 0xF17200);
-	    put("fluidblackberryjuice", 0x592A2A);
-	    put("fluidraspberryjuice", 0xBD3E53);
-	    put("fluidblueberryjuice", 0x264474);
-	    put("fluidcactusfruitjuice", 0xE03434);
-	    put("fluidcherryjuice", 0xA9220A);
-	    put("fluidcranberryjuice", 0xAE1E1E);
-	    put("fluidgrapejuice", 0x9B26A6);
-	    put("fluidkiwijuice", 0xB4EC61);
-	    put("fluidlimejuice", 0x7AD47C);
-	    put("fluidmangojuice", 0xDA7C7C);
-	    put("fluidplumjuice", 0xC562CD);
-	    put("fluidpearjuice", 0xAFC25B);
-	    put("fluidapricotjuice", 0xE9B271);
-	    put("fluidfigjuice", 0xC490E0);
-	    put("fluidgrapefruitjuice", 0xD28633);
-	    put("fluidpersimmonjuice", 0xEE9725);
-	    put("fluidorangejuice", 0xF39B3B);
-	    put("fluidpapayajuice", 0xDCB076);
-	    put("fluidpeachjuice", 0xD39E7B);
-	    put("fluidpomegranatejuice", 0xA13D3D);
-	    put("fluidstarfruitjuice", 0xC1EE6C);
-	    put("fluidstrawberryjuice", 0xC51A1A);
-	    put("fluidoliveoil", 0xB4C561);
-	    put("fluidsesameoil", 0x584028);
-	    put("fluidfreshmilk", 0xE8DFD9);
-	    put("fluidcoconutmilk", 0xF3F0D1);
-	    put("fluidsoymilk", 0xC3D4C7);
-	    put("fluidfreshwater", 0x7CB6F8);
-	    put("fluidbubblywater", 0x395376);
-	    put("fluidliquidtofu", 0xD1D1D1);
-	}};
-    
-    public Map<String, Fluid> juices = new HashMap<String, Fluid>();
+public class IHFluid extends AssetParser
+{
+    public static IHAssetLoader loader =
+	new IHAssetLoader(
+	    "assets/" + ImmersiveHarvestcraft.MODID + "/fluiddef",
+	    new IHFluid());
 
-    public void addJuiceFluids()
+    public static Map<ResourceLocation, Fluid> juices =
+	new HashMap<ResourceLocation, Fluid>();
+
+    public IHFluid()
     {
-	juiceColors.forEach((key, value) -> {
-		Fluid fluid = new FluidJuice(key, value);
-		IHLogger.logger.info("Register fluid " + key);
-		juices.put(key, fluid);
-	    });
-	registerFluids();
+    	super();
     }
 
-    protected void registerFluids()
+    @Override
+    public void parseResourceJson(ResourceLocation key, JsonObject json)
     {
-	juices.forEach((key, fluid) -> {
-		FluidRegistry.registerFluid(fluid);
-	    });
+	String colorString = JsonUtils.getString(json, "color");
+	Long colorVal = Long.decode(colorString);
+	Color color = new Color((int)(long)colorVal, true);
+	Fluid fluid = new FluidJuice(key.getResourcePath(), color);
+	IHFluid.juices.put(key, fluid);
+	FluidRegistry.registerFluid(fluid);
+	IHLogger.logger.info("Register fluid " + key.toString());
     }
 }

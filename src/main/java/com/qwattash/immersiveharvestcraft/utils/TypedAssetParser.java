@@ -19,30 +19,41 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.qwattash.immersiveharvestcraft.blocks;
+package com.qwattash.immersiveharvestcraft.utils;
 
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraft.client.renderer.block.statemap.StateMap;
+import java.util.Map;
+import java.util.HashMap;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.JsonUtils;
 
-public class JuiceFluidBlock extends BlockFluidClassic
+import net.minecraftforge.fml.common.ModContainer;
+
+public class TypedAssetParser extends AssetParser
 {
-    public JuiceFluidBlock(Fluid fluid)
+    protected Map<String, IAssetJsonConsumer> factories =
+	new HashMap<String, IAssetJsonConsumer>();
+
+    public TypedAssetParser()
     {
-	super(fluid, Material.WATER);
-	setRegistryName("block" + fluid.getName());
-	setUnlocalizedName(getRegistryName().toString());
+	super();
+    }
+    
+    @Override
+    protected void parseResourceJson(ResourceLocation key, JsonObject json)
+    {
+	String type = JsonUtils.getString(json, "type");
+	IAssetJsonConsumer consumer = factories.get(type);
+	if (type == null)
+	    throw new JsonParseException("TypedAssetParser found no key 'type'");
+	consumer.parseJson(key, json);
     }
 
-    // @SideOnly(Side.CLIENT)
-    // void render() {
-    // 	ModelLoader.setCustomStateMapper(
-    // 	    this, new StateMap.Builder().ignore(LEVEL).build());
-    // }
+    public void registerTypeConsumer(String type, IAssetJsonConsumer consumer)
+    {
+	factories.put(type, consumer);
+    }
 }

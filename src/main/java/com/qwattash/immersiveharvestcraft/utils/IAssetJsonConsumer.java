@@ -19,30 +19,16 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.qwattash.immersiveharvestcraft.blocks;
+package com.qwattash.immersiveharvestcraft.utils;
 
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraft.client.renderer.block.statemap.StateMap;
+import com.google.gson.JsonObject;
 
+import net.minecraft.util.ResourceLocation;
 
-import net.minecraft.block.material.Material;
-
-public class JuiceFluidBlock extends BlockFluidClassic
+public interface IAssetJsonConsumer
 {
-    public JuiceFluidBlock(Fluid fluid)
-    {
-	super(fluid, Material.WATER);
-	setRegistryName("block" + fluid.getName());
-	setUnlocalizedName(getRegistryName().toString());
-    }
-
-    // @SideOnly(Side.CLIENT)
-    // void render() {
-    // 	ModelLoader.setCustomStateMapper(
-    // 	    this, new StateMap.Builder().ignore(LEVEL).build());
-    // }
+    /**
+     * Parse the give json object and do something with it.
+     */
+    public void parseJson(ResourceLocation key, JsonObject json);
 }

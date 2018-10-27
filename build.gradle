@@ -66,22 +66,34 @@ dependencies {
     // except that these dependencies get remapped to your current MCP mappings
     //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-    // deobfCompile "blusunrize:ImmersiveEngineering:0.12-85-+"
     // deobfCompile "blusunrize:ImmersivePetroleum:0.12-85-+:dev"
     // deobfCompile "blusunrize:harvestcraft:1.12-85-+:dev"
 
     // compile against the JEI API but do not include it at runtime
-    deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
+    // deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     // at runtime, use the full JEI jar
-    runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+    // runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 
-    deobfProvided "blusunrize:ImmersiveEngineering:0.12-85-+:api"
-    runtime "blusunrize:ImmersiveEngineering:0.12-85-+"
+    // deobfProvided "blusunrize:ImmersiveEngineering:0.12-85-+:api"
+    // runtime "blusunrize:ImmersiveEngineering:0.12-85-+"
+
+    provided files("libs/ImmersiveEngineering-0.12-86-deobf.jar")
+    provided files("libs//harvestcraft-1.12a-deobf.jar")
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+}
+
+jar {
+    archiveName "${baseName}-1.12.2-${version}.jar"
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+        archiveName = "${baseName}-1.12.2-${version}-deobf.jar"
+    classifier = 'deobjar'
 }
 
 processResources {

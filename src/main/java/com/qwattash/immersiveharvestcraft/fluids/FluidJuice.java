@@ -22,15 +22,19 @@
 package com.qwattash.immersiveharvestcraft.fluids;
 
 import com.qwattash.immersiveharvestcraft.ImmersiveHarvestcraft;
+import com.qwattash.immersiveharvestcraft.IHLogger;
+
+import java.awt.Color;
 
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidRegistry;
 
 import net.minecraft.util.ResourceLocation;
 
 public class FluidJuice extends Fluid
 {
-    public FluidJuice(String name, int color)
+    public FluidJuice(String name, Color color)
     {
 	super(name,
 	      new ResourceLocation(ImmersiveHarvestcraft.MODID,
@@ -38,7 +42,20 @@ public class FluidJuice extends Fluid
 	      new ResourceLocation(ImmersiveHarvestcraft.MODID,
 				   "fluids/juice_flow"),
 	      color);
+	FluidRegistry.addBucketForFluid(this);
+	IHLogger.logger.debug(
+	    "Fluid {} color expect {} found {}",
+	    name,
+	    Integer.toHexString(color.getRGB()),
+	    Integer.toHexString(getColor()));
     }
+
+    // @Override
+    // public int getColor()
+    // {
+
+    // 	return 
+    // }
 
     @Override
     public boolean doesVaporize(FluidStack fstack)

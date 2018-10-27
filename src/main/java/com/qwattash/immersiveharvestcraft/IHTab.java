@@ -22,6 +22,7 @@
 package com.qwattash.immersiveharvestcraft;
 
 import com.qwattash.immersiveharvestcraft.ImmersiveHarvestcraft;
+import com.qwattash.immersiveharvestcraft.fluids.FluidJuice;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.NonNullList;
@@ -55,7 +56,7 @@ public class IHTab extends CreativeTabs
     @SideOnly(Side.CLIENT)
     public ItemStack getTabIconItem()
     {
-	FluidStack fstack = FluidRegistry.getFluidStack("fluidgrapejuice",
+	FluidStack fstack = FluidRegistry.getFluidStack("fluidapplejuice",
 		Fluid.BUCKET_VOLUME);
 	return FluidUtil.getFilledBucket(fstack);
     }
@@ -73,6 +74,10 @@ public class IHTab extends CreativeTabs
     {
 	FluidStack fstack = FluidRegistry.getFluidStack(evt.getFluidName(),
 		Fluid.BUCKET_VOLUME);
-	extraBuckets.add(FluidUtil.getFilledBucket(fstack));
+	if (fstack.getFluid() instanceof FluidJuice) {
+	    IHLogger.logger.debug("Add bucket to creative tabs for {}",
+				  evt.getFluidName());
+	    extraBuckets.add(FluidUtil.getFilledBucket(fstack));
+	}
     }
 };
