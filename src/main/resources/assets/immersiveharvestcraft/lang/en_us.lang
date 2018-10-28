@@ -1,10 +1,10 @@
 # Fluids
-fluid.fluidapplejuice.name=Apple Juice 
-fluid.fluidcarrotjuice.name=Carrot Juice
+fluid.fluidapplejuice=Apple Juice 
+fluid.fluidcarrotjuice=Carrot Juice
 fluid.fluidblackberryjuice=Blackberry Juice
 fluid.fluidraspberryjuice=Raspberry Juice
 fluid.fluidblueberryjuice=Blueberry Juice
-fluid.fluidcactusfruitjuiceCactus Fruit Juice
+fluid.fluidcactusfruitjuice=Cactus Fruit Juice
 fluid.fluidcherryjuice=Cherry Juice
 fluid.fluidcranberryjuice=Cranberry Juice
 fluid.fluidgrapejuice=Grape Juice
@@ -31,3 +31,38 @@ fluid.fluidsoymilk=Soy Milk
 fluid.fluidfreshwater=Fresh Water
 fluid.fluidbubblywater=Bubbly Water
 fluid.fluidliquidtofu=Liquid Tofu
+# Fluid items
+tile.immersiveharvestcraft:blockfluidapplejuice.name=Apple Juice 
+tile.immersiveharvestcraft:blockfluidcarrotjuice.name=Carrot Juice
+tile.immersiveharvestcraft:blockfluidblackberryjuice.name=Blackberry Juice
+tile.immersiveharvestcraft:blockfluidraspberryjuice.name=Raspberry Juice
+tile.immersiveharvestcraft:blockfluidblueberryjuice.name=Blueberry Juice
+tile.immersiveharvestcraft:blockfluidcactusfruitjuice.name=Cactus Fruit Juice
+tile.immersiveharvestcraft:blockfluidcherryjuice.name=Cherry Juice
+tile.immersiveharvestcraft:blockfluidcranberryjuice.name=Cranberry Juice
+tile.immersiveharvestcraft:blockfluidgrapejuice.name=Grape Juice
+tile.immersiveharvestcraft:blockfluidkiwijuice.name=Kiwi Juice
+tile.immersiveharvestcraft:blockfluidlimejuice.name=Lime Juice
+tile.immersiveharvestcraft:blockfluidmangojuice.name=Mango Juice
+tile.immersiveharvestcraft:blockfluidplumjuice.name=Plum Juice
+tile.immersiveharvestcraft:blockfluidpearjuice.name=Pear Juice
+tile.immersiveharvestcraft:blockfluidapricotjuice.name=Apricot Juice
+tile.immersiveharvestcraft:blockfluidfigjuice.name=Fig Juice
+tile.immersiveharvestcraft:blockfluidgrapefruitjuice.name=Grapefruit Juice
+tile.immersiveharvestcraft:blockfluidpersimmonjuice.name=Persimmon Juice
+tile.immersiveharvestcraft:blockfluidorangejuice.name=Orange Juice
+tile.immersiveharvestcraft:blockfluidpapayajuice.name=Papaya Juice
+tile.immersiveharvestcraft:blockfluidpeachjuice.name=Peach Juice
+tile.immersiveharvestcraft:blockfluidpomegranatejuice.name=Pomegranate Juice
+tile.immersiveharvestcraft:blockfluidstarfruitjuice.name=Starfruit Juice
+tile.immersiveharvestcraft:blockfluidstrawberryjuice.name=Strawberry Juice
+tile.immersiveharvestcraft:blockfluidoliveoil.name=Olive Oil
+tile.immersiveharvestcraft:blockfluidsesameoil.name=Sesame Oil
+tile.immersiveharvestcraft:blockfluidfreshmilk.name=Fresh Milk
+tile.immersiveharvestcraft:blockfluidcoconutmilk.name=Coconut Milk
+tile.immersiveharvestcraft:blockfluidsoymilk.name=Soy Milk
+tile.immersiveharvestcraft:blockfluidfreshwater.name=Fresh Water
+tile.immersiveharvestcraft:blockfluidbubblywater.name=Bubbly Water
+tile.immersiveharvestcraft:blockfluidliquidtofu.name=Liquid Tofu
+# Creative tabs
+itemGroup.immersiveharvestcraft=Immersive Harvestcraft

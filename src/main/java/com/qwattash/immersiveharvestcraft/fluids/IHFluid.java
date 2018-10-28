@@ -62,6 +62,13 @@ public class IHFluid extends AssetParser
 	Fluid fluid = new FluidJuice(key.getResourcePath(), color);
 	IHFluid.juices.put(key, fluid);
 	FluidRegistry.registerFluid(fluid);
+	FluidRegistry.addBucketForFluid(fluid);
 	IHLogger.logger.info("Register fluid " + key.toString());
+    }
+
+    public static void updateCreativeTabs()
+    {
+	for (Fluid fluid : juices.values())
+	    ImmersiveHarvestcraft.modTab.addBucketForFluid(fluid);
     }
 }

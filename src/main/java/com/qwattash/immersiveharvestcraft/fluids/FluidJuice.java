@@ -42,20 +42,7 @@ public class FluidJuice extends Fluid
 	      new ResourceLocation(ImmersiveHarvestcraft.MODID,
 				   "fluids/juice_flow"),
 	      color);
-	FluidRegistry.addBucketForFluid(this);
-	IHLogger.logger.debug(
-	    "Fluid {} color expect {} found {}",
-	    name,
-	    Integer.toHexString(color.getRGB()),
-	    Integer.toHexString(getColor()));
     }
-
-    // @Override
-    // public int getColor()
-    // {
-
-    // 	return 
-    // }
 
     @Override
     public boolean doesVaporize(FluidStack fstack)

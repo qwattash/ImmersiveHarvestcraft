@@ -57,7 +57,7 @@ public class ImmersiveHarvestcraft
     @Mod.Instance(MODID)
     public static ImmersiveHarvestcraft instance = new ImmersiveHarvestcraft();
 
-    public static CreativeTabs modTab = new IHTab();
+    public static IHTab modTab = new IHTab();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -72,6 +72,7 @@ public class ImmersiveHarvestcraft
     public void init(FMLInitializationEvent event)
     {
 	IHLogger.logger.info("ImmersiveHarvestcraft initialization");
+	IHFluid.updateCreativeTabs();
     }
 
     @EventHandler

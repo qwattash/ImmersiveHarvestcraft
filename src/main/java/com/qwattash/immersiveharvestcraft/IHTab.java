@@ -22,7 +22,6 @@
 package com.qwattash.immersiveharvestcraft;
 
 import com.qwattash.immersiveharvestcraft.ImmersiveHarvestcraft;
-import com.qwattash.immersiveharvestcraft.fluids.FluidJuice;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.NonNullList;
@@ -30,13 +29,12 @@ import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidRegistry.FluidRegisterEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidUtil;
+
+import net.minecraftforge.common.ForgeModContainer;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -49,7 +47,6 @@ public class IHTab extends CreativeTabs
     public IHTab()
     {
 	super(ImmersiveHarvestcraft.MODID);
-	MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
@@ -69,15 +66,11 @@ public class IHTab extends CreativeTabs
 	items.addAll(extraBuckets);
     }
 
-    @SubscribeEvent
-    public void onFluidRegistration(FluidRegisterEvent evt)
+    public void addBucketForFluid(Fluid fluid)
     {
-	FluidStack fstack = FluidRegistry.getFluidStack(evt.getFluidName(),
-		Fluid.BUCKET_VOLUME);
-	if (fstack.getFluid() instanceof FluidJuice) {
-	    IHLogger.logger.debug("Add bucket to creative tabs for {}",
-				  evt.getFluidName());
-	    extraBuckets.add(FluidUtil.getFilledBucket(fstack));
-	}
+	FluidStack fstack = new FluidStack(fluid, Fluid.BUCKET_VOLUME);
+	extraBuckets.add(FluidUtil.getFilledBucket(fstack));
+	IHLogger.logger.debug("Add bucket to creative tabs for {}",
+			      fluid.getUnlocalizedName());
     }
 };
