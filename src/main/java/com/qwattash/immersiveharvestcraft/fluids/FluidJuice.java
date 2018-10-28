@@ -41,6 +41,8 @@ public class FluidJuice extends Fluid
 				   "fluids/juice_still"),
 	      new ResourceLocation(ImmersiveHarvestcraft.MODID,
 				   "fluids/juice_flow"),
+	      new ResourceLocation(ImmersiveHarvestcraft.MODID,
+				   "fluids/juice_overlay"),
 	      color);
     }
 
