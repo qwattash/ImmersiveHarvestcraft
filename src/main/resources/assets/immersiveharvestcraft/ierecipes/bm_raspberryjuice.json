@@ -3,7 +3,8 @@
     "result": {
 	"item": "harvestcraft:raspberryjuiceitem",
 	"data": 0,
-	"count": 1
+	"count": 1,
+	"return_input": true
     },
     "input": {
 	"item": "minecraft:glass_bottle",
