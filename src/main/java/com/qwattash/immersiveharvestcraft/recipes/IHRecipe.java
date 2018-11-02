@@ -97,10 +97,6 @@ class DummyRecipe
 
 public class IHRecipe
 {
-    // Slime Ball -- disabled
-    // maplesyrup -> slimeball
-    // honey -> slimeball
-
     // Add Fermenter recipes
     // bait -> ethanol
     // Bee Stuff
@@ -299,10 +295,11 @@ public class IHRecipe
 	    	throw new IngredientMissingException(key, resultRes);
 	    MixerRecipe.addRecipe(outFluid, inFluid,
 		inItems.toArray(new ItemStack[inItems.size()]), energy);
+	    IHLogger.logger.info("Add mixer machine recipe {}", key);
 	}
     }
 
-        /**
+    /**
      * Custom recipe parser for mixer recipes
      */
     public static class RefineryRecipeFactory implements IAssetJsonConsumer
@@ -333,6 +330,53 @@ public class IHRecipe
 	    if (outFluid == null)
 	    	throw new IngredientMissingException(key, resultRes);
 	    RefineryRecipe.addRecipe(outFluid, inFluid1, inFluid2, energy);
+	    IHLogger.logger.info("Add refinery machine recipe {}", key);
+	}
+    }
+
+    /**
+     * Custom recipe parser for fermenter recipes
+     */
+    public static class FermenterRecipeFactory implements IAssetJsonConsumer
+    {
+	public void parseJson(ResourceLocation key, JsonObject json)
+	    throws JsonParseException
+	{
+	    JsonObject result = JsonUtils.getJsonObject(json, "result");
+	    JsonObject input = JsonUtils.getJsonObject(json, "input");
+	    ResourceLocation resultRes = new ResourceLocation(
+		JsonUtils.getString(result, "fluid"));
+	    ResourceLocation inputRes = new ResourceLocation(
+		JsonUtils.getString(input, "item"));
+	    FluidStack outFluid = FluidRegistry.getFluidStack(
+		resultRes.getResourcePath(), JsonUtils.getInt(result, "count"));
+	    ItemStack inItem = new ItemStack(
+		Item.REGISTRY.getObject(inputRes),
+		JsonUtils.getInt(input, "count"),
+		JsonUtils.getInt(input, "data"));
+	    int energy = JsonUtils.getInt(json, "energy");
+
+	    ResourceLocation outItemRes;
+	    if (JsonUtils.hasField(json, "item_result")) {
+		JsonObject itemResult = JsonUtils.getJsonObject(json, "item_result");
+		outItemRes = new ResourceLocation(
+		    JsonUtils.getString(itemResult, "item"));
+	    } else {
+		outItemRes = new ResourceLocation("minecraft", "air");
+	    }
+	    ItemStack outItem = new ItemStack(
+		    Item.REGISTRY.getObject(outItemRes),
+		    JsonUtils.getInt(result, "count"),
+		    JsonUtils.getInt(result, "data"));
+	    
+	    if (outItem == ItemStack.EMPTY)
+	    	throw new IngredientMissingException(key, outItemRes);
+	    if (inItem == ItemStack.EMPTY)
+	    	throw new IngredientMissingException(key, inputRes);
+	    if (outFluid == null)
+	    	throw new IngredientMissingException(key, resultRes);
+	    FermenterRecipe.addRecipe(outFluid, outItem, inItem, energy);
+	    IHLogger.logger.info("Add fermenter machine recipe {}", key);
 	}
     }
 
@@ -346,6 +390,7 @@ public class IHRecipe
 		registerTypeConsumer("crusher", new CrusherRecipeFactory());
 		registerTypeConsumer("mixer", new MixerRecipeFactory());
 		registerTypeConsumer("refinery", new RefineryRecipeFactory());
+		registerTypeConsumer("fermenter", new FermenterRecipeFactory());
 	    }});
 
     @EventBusSubscriber(modid=ImmersiveHarvestcraft.MODID)

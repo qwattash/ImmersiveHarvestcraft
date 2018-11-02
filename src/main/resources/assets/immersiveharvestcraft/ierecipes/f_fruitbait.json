@@ -1,0 +1,14 @@
+{
+    "type": "fermenter",
+    "result": {
+	"fluid": "immersiveengineering:ethanol",
+	"count": 500,
+	"data": 0
+    },
+    "input": {
+	"item": "harvestcraft:fruitbaititem",
+	"count": 1,
+	"data": 0
+    },
+    "energy": 1000
+}
