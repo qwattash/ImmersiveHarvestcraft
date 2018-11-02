@@ -1,0 +1,20 @@
+{
+    "type": "crusher",
+    "result": {
+	"item": "harvestcraft:blackpepperitem",
+	"count": 1,
+	"data": 0
+    },
+    "input": {
+	"item": "harvestcraft:peppercornitem",
+	"count": 1,
+	"data": 0
+    },
+    "secondary": {
+	"item": "harvestcraft:veggiebaititem",
+	"count": 1,
+	"data": 0,
+	"chance": 0.9
+    },
+    "energy": 2000
+}

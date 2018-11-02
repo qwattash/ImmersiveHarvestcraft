@@ -1,0 +1,15 @@
+{
+    "type": "mixer",
+    "result": {
+	"fluid": "immersiveharvestcraft:fluidbubblywater",
+	"count": 1000,
+	"data": 0
+    },
+    "fluid_input": {
+	"fluid": "immersiveharvestcraft:fluidfreshwater",
+	"count": 1000,
+	"data": 0
+    },
+    "inputs": [],
+    "energy": 1000
+}

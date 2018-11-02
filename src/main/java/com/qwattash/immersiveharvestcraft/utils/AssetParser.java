@@ -65,7 +65,8 @@ public class AssetParser
 	if (!"json".equals(FilenameUtils.getExtension(path.toString())))
 	    return;
 
-	String name = FilenameUtils.removeExtension(relative).replaceAll("\\\\", "/");
+	String name = FilenameUtils.removeExtension(relative).
+	    replaceAll("\\\\", "/");
 	ResourceLocation key = new ResourceLocation(modContainer.getModId(), name);
 
 	BufferedReader reader = null;

@@ -1,0 +1,18 @@
+{
+    "type": "squeezer",
+    "result": {
+	"item": "harvestcraft:veggiebaititem",
+	"count": 1,
+	"data": 0
+    },
+    "input": {
+	"item": "harvestcraft:coconutitem",
+	"count": 1,
+	"data": 0
+    },
+    "fluid_result": {
+	"fluid": "immersiveharvestcraft:fluidcoconutmilk",
+	"count": 500
+    },
+    "energy": 800
+}

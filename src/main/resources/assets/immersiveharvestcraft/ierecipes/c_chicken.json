@@ -1,0 +1,14 @@
+{
+    "type": "crusher",
+    "result": {
+	"item": "harvestcraft:groundchickenitem",
+	"count": 2,
+	"data": 0
+    },
+    "input": {
+	"item": "minecraft:chicken",
+	"count": 1,
+	"data": 0
+    },
+    "energy": 2000
+}

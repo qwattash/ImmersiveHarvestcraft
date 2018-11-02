@@ -1,7 +1,7 @@
 {
     "type": "bottlingmachine",
     "result": {
-	"item": "harvestcraft:applejuiceitem",
+	"item": "harvestcraft:strawberryjuiceitem",
 	"data": 0,
 	"count": 1
     },
@@ -11,7 +11,7 @@
 	"count": 1
     },
     "fluid_input": {
-	"fluid": "immersiveharvestcraft:fluidapplejuice",
-	"count": 500
+	"fluid": "immersiveharvestcraft:fluidstrawberryjuice",
+	"count": 250
     }
 }

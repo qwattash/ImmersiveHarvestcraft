@@ -23,7 +23,7 @@ package com.qwattash.immersiveharvestcraft;
 
 import com.qwattash.immersiveharvestcraft.IHLogger;
 import com.qwattash.immersiveharvestcraft.IHTab;
-// import com.qwattash.immersiveharvestcraft.IHRecipe;
+import com.qwattash.immersiveharvestcraft.recipes.IHRecipe;
 import com.qwattash.immersiveharvestcraft.IHConfigManager.IHConfig;
 import com.qwattash.immersiveharvestcraft.fluids.IHFluid;
 
@@ -36,6 +36,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fluids.FluidRegistry;
+
+import blusunrize.immersiveengineering.api.crafting.SqueezerRecipe;
 
 @Mod(modid = ImmersiveHarvestcraft.MODID, name = ImmersiveHarvestcraft.NAME,
      version = ImmersiveHarvestcraft.VERSION,
@@ -87,5 +89,6 @@ public class ImmersiveHarvestcraft
 	IHRecipe.remove("harvestcraft", "market");
 	IHRecipe.remove("harvestcraft", "shippingbin");
 	IHRecipe.remove("harvestcraft", "well");
+	IHRecipe.remove("harvestcraft", "freshwateritem");
     }
 }

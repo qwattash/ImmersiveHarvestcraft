@@ -1,0 +1,17 @@
+{
+    "type": "bottlingmachine",
+    "result": {
+	"item": "harvestcraft:apricotjuiceitem",
+	"data": 0,
+	"count": 1
+    },
+    "input": {
+	"item": "minecraft:glass_bottle",
+	"data": 0,
+	"count": 1
+    },
+    "fluid_input": {
+	"fluid": "immersiveharvestcraft:fluidapricotjuice",
+	"count": 250
+    }
+}

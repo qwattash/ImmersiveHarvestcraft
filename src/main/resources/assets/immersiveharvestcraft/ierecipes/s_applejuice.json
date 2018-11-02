@@ -1,0 +1,18 @@
+{
+    "type": "squeezer",
+    "result": {
+	"item": "harvestcraft:fruitbaititem",
+	"count": 1,
+	"data": 0
+    },
+    "input": {
+	"item": "minecraft:apple",
+	"count": 1,
+	"data": 0
+    },
+    "fluid_result": {
+	"fluid": "immersiveharvestcraft:fluidapplejuice",
+	"count": 500
+    },
+    "energy": 800
+}

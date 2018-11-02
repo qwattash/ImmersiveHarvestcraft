@@ -1,0 +1,19 @@
+{
+    "type": "refinery",
+    "result": {
+	"fluid": "immersiveharvestcraft:fluidfreshwater",
+	"count": 1000,
+	"data": 0
+    },
+    "fluid_input1": {
+	"fluid": "minecraft:water",
+	"count": 500,
+	"data": 0
+    },
+    "fluid_input2": {
+	"fluid": "minecraft:water",
+	"count": 500,
+	"data": 0
+    },
+    "energy": 1000
+}

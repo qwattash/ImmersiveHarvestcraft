@@ -19,18 +19,23 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.qwattash.immersiveharvestcraft.utils;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+package com.qwattash.immersiveharvestcraft.recipes;
 
 import net.minecraft.util.ResourceLocation;
+import com.google.gson.JsonParseException;
 
-public interface IAssetJsonConsumer
+public class InvalidRecipeValueException extends JsonParseException
 {
-    /**
-     * Parse the give json object and do something with it.
-     */
-    public void parseJson(ResourceLocation key, JsonObject json)
-	throws JsonParseException;
+    public ResourceLocation recipeName;
+    public String recipeKey;
+    public String recipeValue;
+
+    public InvalidRecipeValueException(ResourceLocation recipe, String key, String value)
+    {
+	super(key + "=" + value + " is invalid for recipe " +
+	      recipe.toString() + ".");
+	recipeName = recipe;
+	recipeKey = key;
+	recipeValue = value;
+    }
 }

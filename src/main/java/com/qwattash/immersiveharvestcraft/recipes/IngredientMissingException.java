@@ -19,18 +19,21 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.qwattash.immersiveharvestcraft.utils;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+package com.qwattash.immersiveharvestcraft.recipes;
 
 import net.minecraft.util.ResourceLocation;
+import com.google.gson.JsonParseException;
 
-public interface IAssetJsonConsumer
+public class IngredientMissingException extends JsonParseException
 {
-    /**
-     * Parse the give json object and do something with it.
-     */
-    public void parseJson(ResourceLocation key, JsonObject json)
-	throws JsonParseException;
+    public ResourceLocation registryName;
+    public ResourceLocation recipeName;
+
+    public IngredientMissingException(ResourceLocation recipe, ResourceLocation res)
+    {
+	super("Ingredient " + res.toString() + " for recipe " +
+	      recipe.toString() + " does not exist.");
+	recipeName = recipe;
+	registryName = res;
+    }
 }

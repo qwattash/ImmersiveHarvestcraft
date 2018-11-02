@@ -1,0 +1,18 @@
+{
+    "type": "bottlingmachine",
+    "result": {
+	"item": "harvestcraft:bubblywateritem",
+	"data": 0,
+	"count": 1,
+	"return_input": true
+    },
+    "input": {
+	"item": "minecraft:flower_pot",
+	"data": 0,
+	"count": 1
+    },
+    "fluid_input": {
+	"fluid": "immersiveharvestcraft:fluidbubblywater",
+	"count": 1000
+    }
+}

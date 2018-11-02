@@ -1,0 +1,18 @@
+{
+    "type": "squeezer",
+    "result": {
+	"item": "harvestcraft:firmtofuitem",
+	"count": 1,
+	"data": 0
+    },
+    "input": {
+	"item": "harvestcraft:silkentofuitem",
+	"count": 1,
+	"data": 0
+    },
+    "fluid_result": {
+	"fluid": "immersiveharvestcraft:fluidsoymilk",
+	"count": 500
+    },
+    "energy": 800
+}
