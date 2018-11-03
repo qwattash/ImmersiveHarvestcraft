@@ -97,19 +97,6 @@ class DummyRecipe
 
 public class IHRecipe
 {
-    // Add Fermenter recipes
-    // bait -> ethanol
-    // Bee Stuff
-    // Add vanilla crafting recipe for these
-    // recipes.addShapeless("immersive_harvestcraft_wax", <harvestcraft:beeswaxitem> * 2,
-    // 			 [<harvestcraft:waxcombitem>]);
-    // recipes.addShapeless("immersive_harvestcraft_honey", <harvestcraft:honeyitem> * 2,
-    // 			 [<harvestcraft:honeycombitem>]);
-    // Sugar
-    // Add vanilla crafting recipe for these
-    // recipes.addShapeless("immersive_harvestcraft_sugar", <minecraft:sugar> * 2,
-    // 			 [<harvestcraft:beetitem>]);
-
     /* 
      * Items produced by the bottling machine that when used should return
      * their container to the player.
