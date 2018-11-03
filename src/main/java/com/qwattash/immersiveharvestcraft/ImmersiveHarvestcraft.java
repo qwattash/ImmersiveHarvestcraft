@@ -81,14 +81,17 @@ public class ImmersiveHarvestcraft
     public void postInit(FMLPostInitializationEvent event)
     {
 	if (IHConfig.compatPresser)
-	    // remove presser
 	    IHRecipe.remove("harvestcraft", "presser");
 	if (IHConfig.compatGrinder)
-	    // remove grinder
 	    IHRecipe.remove("harvestcraft", "grinder");
-	IHRecipe.remove("harvestcraft", "market");
-	IHRecipe.remove("harvestcraft", "shippingbin");
-	IHRecipe.remove("harvestcraft", "well");
+	if (IHConfig.disableWell)
+	    IHRecipe.remove("harvestcraft", "well");
+	if (IHConfig.disableMarket)
+	    IHRecipe.remove("harvestcraft", "market");
+	if (IHConfig.disableShippingBin)
+	    IHRecipe.remove("harvestcraft", "shippingbin");
+
+	// This is replaced by other recipes
 	IHRecipe.remove("harvestcraft", "freshwateritem");
     }
 }

@@ -45,6 +45,18 @@ public class IHConfigManager {
 	@Comment("Enable compatibility for grinder recipes.")
 	@RequiresWorldRestart
 	public static boolean compatGrinder = true;
+
+	@Comment("Disable well block.")
+	@RequiresWorldRestart
+	public static boolean disableWell = false;
+
+	@Comment("Disable market block.")
+	@RequiresWorldRestart
+	public static boolean disableMarket = false;
+
+	@Comment("Disable shipping bin block.")
+	@RequiresWorldRestart
+	public static boolean disableShippingBin = false;
 	
     }
 
